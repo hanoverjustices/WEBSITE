@@ -1,1 +1,1 @@
-Upload original posters directly here. Filename: YYYY-MM-DD__title.jpg or undated__title.jpg. JPG/JPEG/PNG/WebP supported. Commit to trigger publishing after one-time setup.
+Upload homepage photographs directly here. JPG/JPEG/PNG/WebP supported. Ordinary descriptive filenames are fine. This folder affects only the homepage rotation, not the gallery.

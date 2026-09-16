@@ -9,3 +9,5 @@ PASS: Jamaica date boundary at 05:00 UTC; event date remains colour; next day is
 NOT VERIFIED: browser visual rendering, focus/touch behaviour, live GitHub configuration, permissions and deployment. Browser runtime was unavailable. No live repository or DNS change was made.
 
 Build prerequisites: Python 3.12 and Pillow; installed automatically by the supplied GitHub workflow. Full Git history is fetched. Prebuilt indexes are included for the initial upload and local preview. Future automatic changes require the workflow to be activated.
+
+READABILITY UPDATE: Small font declarations raised to at least 16px; main paragraphs 17–18px, stronger contrast and responsive layout adjustments. JavaScript syntax passed. Browser visual verification remains unavailable.
