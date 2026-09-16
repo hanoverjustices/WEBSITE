@@ -1,0 +1,46 @@
+HJPA NOTICE BOARD & HOMEPAGE SLIDESHOW — SETUP
+
+STATUS
+The package is built and locally checked. It has NOT been uploaded to your GitHub repository or activated on your live website. Repository settings could not be inspected from this session. Your previous setup was described as main-branch GitHub Pages publishing. Keep the existing domain and HTTPS settings.
+
+ONE-TIME SETUP
+1. Download and extract this entire ZIP.
+2. Open the existing HJPA GitHub repository. Under Code, choose Add file > Upload files.
+3. Upload index.html, CNAME and these complete folders: announcements, homepage-slideshow, notice-assets and scripts. Upload the folders with their names intact. Commit changes to main. Do not upload the ZIP itself or an extra outer folder.
+4. Add the workflow: in the repository choose Add file > Create new file. Type exactly .github/workflows/hjpa-pages.yml as the filename. Open WORKFLOW_TO_COPY.txt from this package, copy ALL its contents into the editor, then commit. The same workflow is also included in the ZIP at .github/workflows/hjpa-pages.yml; if that file uploaded successfully already, skip creating it again.
+5. In Settings > Pages > Build and deployment > Source, select GitHub Actions. Keep the existing custom domain hanoverjpa.com and HTTPS configuration. Do not change Cloudflare DNS.
+6. Under Actions select Publish HJPA website > Run workflow > main. Wait for a green successful run. If Actions are disabled, enable them for this repository. If your publishing branch is not main, replace main in the workflow with that branch and select it when running.
+7. If another custom workflow already publishes this same site, review it before enabling this one; use one publishing workflow to avoid competing deployments.
+8. Open the website and refresh. Click Notice Board at bottom-left. Gia remains at bottom-right. Check the slideshow. Only after a successful workflow and live check is the upload automation activated.
+
+ADDING A POSTER
+Open announcements in GitHub > Add file > Upload files.
+Use an EVENT DATE in the filename, for example:
+2026-10-20__sports-fun-day.jpg
+For a notice without an expiry date:
+undated__important-notice.jpg
+Commit. Wait for the Publish HJPA website workflow to finish. No HTML or JSON editing is needed.
+The newest ADDED file appears first. Replacing the same filename preserves its position. A new filename is treated as a new entry. Keep the filename unchanged when replacing an existing poster.
+Event posters become greyscale after midnight following their date, in Jamaica time. Undated posters remain in colour. Original downloads retain their colours.
+Use YYYY-MM-DD and two underscores. Invalid dates or unsupported poster naming stop the build with an error rather than inventing dates. Fix the filename and commit again. The last successful site remains online.
+
+ADDING A HOMEPAGE PHOTOGRAPH
+Open homepage-slideshow in GitHub > Add file > Upload files. A descriptive filename such as community-visit.jpg is enough. Commit and wait for the workflow.
+New photographs enter the homepage rotation first. These photos are never greyed out based on dates. This folder does not change the Photo Gallery albums.
+
+REPLACING OR REMOVING IMAGES
+Replace the file under the same name to update it. Delete a file from its folder and commit to remove it on the next successful deployment. Generated indexes and optimized previews are rebuilt automatically; never manually edit those files.
+Supported image formats: JPG, JPEG, PNG, WebP (including uppercase extensions). Put images directly in the relevant folder, not in nested subfolders.
+
+WHAT IS INCLUDED
+announcements: 3 original posters.
+homepage-slideshow: 12 originals extracted from the existing homepage rotation.
+notice-assets: notice board controls, generated indexes and optimized previews, plus a bundled homepage fallback.
+scripts/build_content.py: rebuilds both indexes and the website output.
+.github/workflows/hjpa-pages.yml: automation with full Git history and a single build/deploy pipeline.
+CNAME: hanoverjpa.com.
+
+CHECKS AND LIMITS
+JavaScript syntax, supplied poster migration, date logic and Git-history build scenarios were checked locally. See VERIFICATION.txt for results.
+No browser was available for visual, focus or touch testing. The live GitHub workflow has not been run in your account. Opening index.html directly can preview bundled content, but only an activated GitHub workflow makes later folder uploads update the indexes automatically.
+Source guidance: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages

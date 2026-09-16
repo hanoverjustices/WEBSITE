@@ -1,0 +1,11 @@
+LOCAL CHECK RESULTS
+
+PASS: inline JavaScript and notice-board.js syntax.
+PASS: existing GALLERY and RESOURCES data unchanged; leadership portrait data retained.
+PASS: 3 original posters and 12 current homepage images migrated.
+PASS: temporary Git repository: initial date tie-break; newer upload first; undated uppercase filename; replacement preserves original added timestamp and changes cache key; deletion; slideshow addition with spaces and uppercase extension; independence of folders; empty slideshow fallback; deployment file allowlist.
+PASS: Jamaica date boundary at 05:00 UTC; event date remains colour; next day is past; undated stays colour.
+
+NOT VERIFIED: browser visual rendering, focus/touch behaviour, live GitHub configuration, permissions and deployment. Browser runtime was unavailable. No live repository or DNS change was made.
+
+Build prerequisites: Python 3.12 and Pillow; installed automatically by the supplied GitHub workflow. Full Git history is fetched. Prebuilt indexes are included for the initial upload and local preview. Future automatic changes require the workflow to be activated.
