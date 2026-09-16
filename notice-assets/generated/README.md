@@ -1,0 +1,1 @@
+Correct generated assets folder
