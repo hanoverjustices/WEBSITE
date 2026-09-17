@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "auditedOn": "2026-09-16",
+  "sources": [{
+    "id": "opm-installation-2025", "title": "Installation Ceremony for Custos Hon. Lennox Anderson-Jackson, Custos Rotulorum of Hanover",
+    "publisher": "Office of the Prime Minister, Jamaica",
+    "url": "https://opm.gov.jm/installation-ceremony-for-custos-hon-lennox-anderson-jackson-custos-rotulorum-of-hanover/",
+    "published": "2025-07-31", "updated": null, "section": "Keynote Address — ceremony heading and opening address", "page": null,
+    "excerpt": "Installation Ceremony for Custos Hon. Lennox Anderson-Jackson, Custos Rotulorum of Hanover",
+    "authority": "official-government", "rank": 2, "status": "approved", "verifiedOn": "2026-09-16", "reviewDue": "2026-12-16",
+    "scope": ["leadership"], "note": "The heading dates the ceremony July 17, 2025. This historical speech does not independently verify continued officeholding in September 2026."
+  }],
+  "records": [{
+    "id": "custos-installation", "topic": "leadership", "factKey": "hanover.custos.installation.2025", "value": "Lennox Anderson-Jackson|2025-07-17",
+    "status": "approved", "temporalStatus": "historical", "effectiveFrom": "2025-07-17", "effectiveTo": "2025-07-17",
+    "answer": "The official installation record identifies the Honourable Lennox Anderson-Jackson as Custos of Hanover at the ceremony on 17 July 2025. This verifies that historical appointment event, not who holds office today.",
+    "sourceIds": ["opm-installation-2025"],
+    "aliases": ["who is the custos", "who is the custos of hanover", "who is the current custos of hanover", "who is hanover custos", "custos", "custos of hanover", "who was installed as custos in 2025", "when was lennox anderson jackson installed", "when was the custos installed", "who is lennox anderson jackson"]
+  },
+  {"id":"current-custos","topic":"leadership","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":[],"note":"Current officeholding requires a current authoritative record; historical installation is separately supported."},
+  {"id":"hjpa-officers","topic":"leadership","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":["who is the president","who is the hjpa president","who is the past president","who is the vice president","list the executive"],"note":"Existing EXECUTIVE array and website copy are not independently approved evidence. Obtain an authorised HJPA roster and effective date."},
+  {"id":"jp-services","topic":"jp-services","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":["what can a jp do","jp services","can a jp certify documents"],"note":"Official current powers and limitations must be reviewed before approval."},
+  {"id":"become-jp","topic":"become-jp","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":["how do i become a jp","become a jp","what are the qualifications to become a jp"],"note":"MOJ page could not be retrieved during this audit; no eligibility or application procedure approved."},
+  {"id":"annual-reports","topic":"annual-reports","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":["annual report","jp annual report","when is the annual report due","where is the annual report form"],"note":"Existing form URL and deadlines require confirmation from a retrievable Ministry source."},
+  {"id":"resources","topic":"resources","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":["jp manual","resources","where is the jp manual"],"note":"Existing resource corpus has not passed claim-level review; automatic indexing is not approval."},
+  {"id":"events","topic":"events","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":["upcoming events","sports day","when is sports day","what events are coming up"],"note":"Poster uploads and filename dates are not automatically approved facts. Review original poster, organiser and event date."},
+  {"id":"contacts","topic":"contacts","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":["contact details","hjpa phone number","how do i contact hjpa","custos phone number"],"note":"Require authorised published contact source; do not reuse private conversation details."},
+  {"id":"legal-guidance","topic":"legal-guidance","status":"unverified","temporalStatus":"current-unconfirmed","sourceIds":[],"aliases":["can a jp grant bail","what does the law say","legal advice"],"note":"No current consolidated statute or approved legal passage is indexed. All legal conclusions withheld."}]
+}
