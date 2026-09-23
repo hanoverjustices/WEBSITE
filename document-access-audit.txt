@@ -1,0 +1,66 @@
+# HJPA document-access audit — 23 September 2026
+
+## Result
+
+The live website and repository served the same earlier Gia HTML. This update includes the v15 reviewed training answers and the document-access repairs. It has not been committed or deployed to GitHub by this task.
+
+Seven resource entries now use supplied local PDFs: JP Act, 2021 amendment (within the Act compilation), JP Jurisdiction Act, Official Seals Regulations, Bail Act 2023, JP Training Manual, and the annual-report Second Schedule (within the Act, PDF page 24).
+
+All 14 original training/legal PDFs are included byte-for-byte. The main resource centre and Gia share a catalogue embedded in index.html. The standalone document-catalogue.json is an inspection copy; editing it alone does not rebuild Gia or change the site. Publication dates are shown only when known. Copies are not represented as independently confirmed current law.
+
+## Live access results
+
+- 45 unique resource/MOJ URLs checked using HTTP GET with certificate verification enabled. Ten Google Drive viewer/preview pages returned HTML with HTTP 200; that does not establish that the underlying PDF renders. No external PDF bytes were retrieved.
+- All 35 MOJ/laws.moj requests failed from this environment. Exact errors are retained in link-audit.json. These are environment observations, not a claim that the Ministry is universally offline. Browser embedding restrictions and certificate failures were not established as the cause.
+- The existing annual-report Microsoft Forms short link returned HTTP 200 and redirected to the expected response page. The embedded-form request timed out. No form was submitted and end-to-end submission was not tested. The official endpoint remains external.
+- The current repository build script and workflow were retrieved successfully. Existing push-on-main deployment is retained; no workflow edits or manual run are required for this update.
+
+## Important document distinction
+
+The old Official Seals Act is NOT the supplied Official Seals Regulations. The supplied JP Act, section 24, PDF page 20, records repeal of the former and saving of the latter. The resource title now identifies the Act as historical/repealed, retains its original official URL, and separately offers the local repeal provision and Regulations. No Regulations PDF was substituted under an Act title.
+
+## Remaining external-only resources
+
+No verified local copy was available for these 13 resource entries:
+
+1. Official Seals Act (historical/repealed)
+2. Bail Regulations
+3. Spirit Licence Act
+4. Zones of Special Operations Act
+5. Judicature (Parish Courts) Act
+6. Voluntary Declarations Act
+7. Oaths Act
+8. Interpretation Act
+9. Attestation of Instruments (Facilities) Act — existing URL leads to the general library
+10. Proceeds of Crime Act
+11. Child Diversion Act
+12. Constitution of Jamaica
+13. JP Application Form
+
+These entries now display an honest access notice and direct official link, not an automatically loaded external PDF iframe. The training information sheet is not substituted for the application form. The annual-report schedule is clearly identified as a page in the supplied Act rather than the separate currently unavailable MOJ PDF. The 2021 Hanover JP listing also remains an external historical source, not evidence of current officeholding.
+
+## Validation
+
+- 80 Gia regression/source checks passed.
+- 27 resource/viewer tests passed, including all 20 resource entries, local downloads, external access notices, historical labeling, shared catalogue, page references and JavaScript parsing.
+- Live repository build script tested in an isolated fixture; all 14 PDF files retained their SHA-256 hashes and page counts in the generated site.
+- Original supplied PDFs remain unchanged; relevant annual-report and amendment pages visually inspected.
+- Browser installation failed. Desktop/mobile appearance, native PDF preview behavior, external iframe rendering and keyboard behavior in a real browser remain unverified. Direct-open/download controls do not depend on successful embedding.
+- Nothing was published and no live form submission was made.
+
+## Revised upload instructions after GitHub rejection
+
+Extract and upload Part 1, then Part 2, then Part 3, committing each part separately.
+Always start at the repository main page where CNAME appears.
+Parts 1 and 2: upload the intact notice-assets folder inside each extracted ZIP.
+Part 3: upload index.html and the intact notice-assets folder together.
+Do not upload the ZIP, its enclosing Part folder, or paste the HTML into GitHub's editor.
+Do not open notice-assets on GitHub first. No existing files need deletion.
+The existing workflow starts after each commit; no manual runs are needed.
+All three parts are necessary. The final part contains the smaller index.html.
+
+The image bytes and all PDFs are unchanged. Embedded images were extracted into
+notice-assets/site-images; paths are automatically handled by the current workflow.
+Each batch is below 24 MB uncompressed and has fewer than 100 files.
+This packaging addresses large uploads but cannot guarantee that GitHub will
+accept a commit: the error screenshot did not identify the rejected file.
