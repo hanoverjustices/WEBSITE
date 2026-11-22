@@ -123,7 +123,7 @@ def main():
             data=[item for item in data if not restricted_entry(item)]
         html=html[:pos]+json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\\\u003c')+html[pos+end:]
     # Remove manual promotional controls and references from the public UI.
-    html=re.sub(r'<button\\s+onclick="openResourceById\\(\\'jp-training-manual\\'\\)"[^>]*>.*?</button>','',html,flags=re.I|re.S)
+    html=re.sub(r"<button\\s+onclick=\\\"openResourceById\\(.*?jp-training-manual.*?\\)\\\"[^>]*>.*?</button>",'',html,flags=re.I|re.S)
     html=html.replace('Ask plain-language questions across the 200-page JP Qualifying Training Manual and the core JP Act, Jurisdiction Act, Official Seals Regulations and Bail Act. Gia cites the document and page used.','Ask questions about publicly available JP legislation and official resources. Always check current amendments with the issuing authority.')
     html=html.replace('JP Qualifying Training Manual','JP legal resources')
     homepage.write_text(html,encoding='utf-8')
