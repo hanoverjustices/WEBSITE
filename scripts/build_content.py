@@ -206,7 +206,15 @@ def main():
     html=html.replace('</body>','<script defer src="/scripts/hjpa-document-reader.js"></script></body>',1)
     homepage.write_text(html,encoding='utf-8')
     # A browsable index of actual local PDFs, rather than links to guessed files.
-    local_documents=sorted(p for p in out.rglob('*.pdf') if p.is_file())
+    # Avoid showing duplicate copies of the same PDF under different filenames.
+    candidates=sorted((p for p in out.rglob('*.pdf') if p.is_file()),key=lambda p:(0 if 'documents' in p.parts else 1,str(p)))
+    local_documents=[]
+    seen_hashes=set()
+    for pdf in candidates:
+        digest=hashlib.sha256(pdf.read_bytes()).hexdigest()
+        if digest in seen_hashes:continue
+        seen_hashes.add(digest)
+        local_documents.append(pdf)
     from html import escape as html_escape
     cards=[]
     for pdf in local_documents:
