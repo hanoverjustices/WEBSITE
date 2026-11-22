@@ -168,6 +168,43 @@ def main():
     homepage.write_text(current,encoding='utf-8')
     # Add a nonfloating navigation link without changing existing page structure.
     homepage.write_text(homepage.read_text(encoding='utf-8').replace('</body>','<div style="text-align:center;padding:18px 12px 95px;background:#0c1c32"><a href="/documents.html" style="color:#f2d789;font:700 15px system-ui;text-decoration:underline">Browse Laws, Forms &amp; PDF Library</a></div></body>',1),encoding='utf-8')
+    # Publish real, directly addressable pages instead of one giant scroll.
+    # Each page retains the original design, interactive scripts and Gia.
+    page_sections={
+      'index.html':[],
+      'leadership.html':['leadership','milestones'],
+      'services.html':['services'],
+      'annual-report.html':['annual-report'],
+      'resources.html':['resources'],
+      'find-services.html':['justice-services'],
+      'gallery.html':['gallery'],
+      'memorials.html':['memorials'],
+      'media.html':['media'],
+      'justice-centre.html':['centre'],
+      'faq.html':['faq'],
+    }
+    anchor_pages={'home':'index.html','become-jp':'services.html','notice-board':'index.html',
+      'leadership':'leadership.html','milestones':'leadership.html','services':'services.html',
+      'annual-report':'annual-report.html','resources':'resources.html','justice-services':'find-services.html',
+      'gallery':'gallery.html','memorials':'memorials.html','media':'media.html',
+      'centre':'justice-centre.html','faq':'faq.html'}
+    base_html=homepage.read_text(encoding='utf-8')
+    for filename,visible in page_sections.items():
+        page=base_html
+        for anchor,target in anchor_pages.items():
+            page=page.replace('href="#'+anchor+'"','href="/'+target+('#'+anchor if anchor in {'become-jp','notice-board','milestones'} else '')+'"')
+        # Hide every other main section while keeping all interactive widgets loaded.
+        # The homepage displays its hero and quick-access content only.
+        selectors=['main > section.section','main > section.justice-directory','main > section.memorial-section','main > section.navy-section']
+        css='main > section:not(.hero){display:none!important}'
+        if filename!='index.html':css+='main > section.hero{display:none!important}'
+        for section_id in visible:
+            css+='main > section#'+section_id+'{display:block!important}'
+        # Only show the original main content of this page; header/footer remain.
+        page=page.replace('</head>','<style id="hjpa-multipage">'+css+'</style></head>',1)
+        if filename!='index.html':
+            page=page.replace('<main id="home">','<main id="home"><div style="padding:22px max(16px,5vw);background:#10243e;color:#e8d486;font:700 14px system-ui"><a href="/" style="color:inherit">← Home</a> / '+filename.replace('.html','').replace('-',' ').title()+'</div>',1)
+        (out/filename).write_text(page,encoding='utf-8')
     shutil.copytree(ROOT/'scripts',out/'scripts',dirs_exist_ok=True)
     # Fail publishing if key local assets are missing.
     for required in [favicon,'scripts/hjpa-document-reader.js']:
