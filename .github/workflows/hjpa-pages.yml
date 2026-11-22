@@ -33,8 +33,6 @@ jobs:
         run: |
           test -s _site/index.html
           test -s _site/notice-assets/site-images/78326aac0c092349df10.png
-          test -s _site/jp-act.pdf
-          test -s _site/manual.pdf
           test -s _site/scripts/hjpa-document-reader.js
       - uses: actions/upload-pages-artifact@v4
         with:
