@@ -51,6 +51,8 @@ jobs:
           test ! -e _site/notice-assets/gia-documents/manual.pdf
           ! grep -q 'notice-assets/gia-documents/manual.pdf' _site/index.html
           ! grep -q 'JP Qualifying Training Manual' _site/index.html
+      - name: Audit local navigation and published assets
+        run: python scripts/audit_published_site.py
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
