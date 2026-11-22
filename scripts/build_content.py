@@ -1,7 +1,7 @@
 """Generate both indexes and a deployable allowlisted site. Originals stay untouched."""
 from pathlib import Path
 from PIL import Image, ImageOps
-import hashlib,json,re,subprocess,shutil,datetime,sys
+import hashlib,json,re,subprocess,shutil,datetime,sys,urllib.request
 from urllib.parse import quote
 ROOT=Path(__file__).resolve().parents[1]
 ASSETS=ROOT/'notice-assets'
@@ -69,6 +69,23 @@ def main():
         dest=out/pdf.relative_to(ROOT)
         dest.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(pdf,dest)
+    # Fetch the confirmed official enactments into the published site. Do not
+    # silently fall back to a superseded Bail Act if the source is unavailable.
+    official_pdfs={
+        'bail.pdf':'https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf',
+        'jp-act.pdf':'https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf',
+        'jp-application-form.pdf':'https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf',
+    }
+    for filename,url in official_pdfs.items():
+        request=urllib.request.Request(url,headers={'User-Agent':'HJPA-Resource-Verification/1.0','Accept':'application/pdf'})
+        try:
+            with urllib.request.urlopen(request,timeout=35) as response:
+                data=response.read(18*1024*1024+1)
+            if len(data)>18*1024*1024 or not data.lstrip().startswith(b'%PDF-') or len(data)<1500:
+                raise ValueError('Invalid or unexpectedly large PDF')
+            (out/filename).write_bytes(data)
+        except Exception as exc:
+            raise RuntimeError('Unable to verify official PDF '+filename+'; previous deployment retained') from exc
     # Restore the HJPA logo in browser tabs using the same verified local image as the header.
     favicon='notice-assets/site-images/78326aac0c092349df10.png'
     homepage=out/'index.html'
