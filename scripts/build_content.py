@@ -62,6 +62,8 @@ def main():
             if p.suffix.lower() in EXT:shutil.copyfile(p,out/folder/p.name)
     # Local-first document delivery: all original repository PDF files are published.
     for pdf in ROOT.rglob('*.pdf'):
+        if pdf.name.lower()=='manual.pdf' and 'gia-documents' in pdf.parts:
+            continue
         if any(part in {'.git','_site','node_modules'} for part in pdf.relative_to(ROOT).parts):
             continue
         if pdf.is_symlink():
@@ -89,6 +91,38 @@ def main():
             destination.write_bytes(data)
         except Exception as exc:
             print(f'WARNING: official snapshot {filename} unavailable; verify its source before publishing: {exc}',file=sys.stderr)
+    # Restricted JTI qualifying training manual: no public distribution permission.
+    # Remove both the PDF and its extracted contents from the published Gia corpus.
+    restricted=out/'notice-assets'/'gia-documents'/'manual.pdf'
+    if restricted.exists():
+        restricted.unlink()
+    homepage=out/'index.html'
+    html=homepage.read_text(encoding='utf-8')
+    decoder=json.JSONDecoder()
+    for prefix in ['window.GIA_APPROVED_KB=','const GIA_KNOWLEDGE_V2=']:
+        start=html.find(prefix)
+        if start<0:
+            raise ValueError('Expected Gia knowledge dataset missing: '+prefix)
+        pos=start+len(prefix)
+        data,end=decoder.raw_decode(html[pos:])
+        def restricted_entry(item):
+            if not isinstance(item,dict):return False
+            return ('jp qualifying training manual' in str(item.get('title','')).lower()
+                    or 'jp qualifying training manual' in str(item.get('document','')).lower()
+                    or 'jp-training-manual' in str(item.get('resourceId','')).lower()
+                    or 'manual.pdf' in str(item.get('url','')).lower()
+                    or str(item.get('documentId','')).lower()=='jp-training-manual')
+        if isinstance(data,dict):
+            for key,value in list(data.items()):
+                if isinstance(value,list):data[key]=[item for item in value if not restricted_entry(item)]
+            # Remove manual document metadata and all page excerpts from Gia.
+            for key in ['documents','resourceCatalogue','sources','evidence']:
+                if isinstance(data.get(key),list):
+                    data[key]=[item for item in data[key] if not restricted_entry(item)]
+        elif isinstance(data,list):
+            data=[item for item in data if not restricted_entry(item)]
+        html=html[:pos]+json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\\\u003c')+html[pos+end:]
+    homepage.write_text(html,encoding='utf-8')
     # Restore the HJPA logo in browser tabs using the same verified local image as the header.
     favicon='notice-assets/site-images/78326aac0c092349df10.png'
     homepage=out/'index.html'
