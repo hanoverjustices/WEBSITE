@@ -178,15 +178,15 @@ def main():
           resource.localURL=files[resource.id]||null;
           resource.unavailable=!files[resource.id];
         }
-        const waiting=RESOURCES.filter(r=>!files[r.id]).length;
+        // Only display locally verified documents; no misleading pending-count banner.
         RESOURCES.splice(0,RESOURCES.length,...RESOURCES.filter(r=>!!files[r.id]));
         const grid=document.getElementById('resourceGrid');
-        if(grid&&waiting){
+        if(grid&&!RESOURCES.length){
           const info=document.createElement('p');
           info.id='hjpaResourceAvailability';
           info.setAttribute('role','status');
-          info.style.cssText='grid-column:1/-1;padding:12px 16px;background:#fff6db;color:#3e321c;border-radius:12px';
-          info.textContent=waiting+' additional resources are awaiting verified, locally hosted copies. Only available PDFs are listed here.';
+          info.style.cssText='grid-column:1/-1;padding:16px;background:#fff6db;color:#3e321c;border-radius:12px';
+          info.textContent='No locally hosted PDF documents have been verified for this section yet. The document collection is temporarily unavailable.';
           grid.parentNode.insertBefore(info,grid);
         }
         if(typeof renderResources==='function')renderResources();
