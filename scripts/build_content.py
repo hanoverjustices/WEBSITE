@@ -192,6 +192,8 @@ def main():
         if(typeof renderResources==='function')renderResources();
       }
     })();'''.replace('__FILES__',reader_map),encoding='utf-8')
+    (out/'scripts').mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(ROOT/'scripts'/'hjpa-resource-bridge.js',out/'scripts'/'hjpa-resource-bridge.js')
     html=homepage.read_text(encoding='utf-8')
     html=html.replace('</body>',resource_bridge+'</body>',1)
     homepage.write_text(html,encoding='utf-8')
