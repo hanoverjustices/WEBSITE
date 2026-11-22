@@ -37,6 +37,18 @@ jobs:
           test -s _site/documents.html
           grep -q 'hjpa-document-reader.js' _site/documents.html
           grep -q 'documents.html' _site/index.html
+          test -s _site/leadership.html
+          test -s _site/services.html
+          test -s _site/resources.html
+          test -s _site/find-services.html
+          test -s _site/annual-report.html
+          test -s _site/gallery.html
+          test -s _site/memorials.html
+          test -s _site/media.html
+          test -s _site/justice-centre.html
+          test ! -e _site/notice-assets/gia-documents/manual.pdf
+          ! grep -q 'notice-assets/gia-documents/manual.pdf' _site/index.html
+          ! grep -q 'JP Qualifying Training Manual' _site/index.html
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
