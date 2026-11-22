@@ -62,7 +62,7 @@ def main():
             if p.suffix.lower() in EXT:shutil.copyfile(p,out/folder/p.name)
     # Local-first document delivery: all original repository PDF files are published.
     for pdf in ROOT.rglob('*.pdf'):
-        if pdf.name.lower()=='manual.pdf' and 'gia-documents' in pdf.parts:
+        if pdf.name.lower()=='manual.pdf':
             continue
         if any(part in {'.git','_site','node_modules'} for part in pdf.relative_to(ROOT).parts):
             continue
@@ -93,8 +93,7 @@ def main():
             print(f'WARNING: official snapshot {filename} unavailable; verify its source before publishing: {exc}',file=sys.stderr)
     # Restricted JTI qualifying training manual: no public distribution permission.
     # Remove both the PDF and its extracted contents from the published Gia corpus.
-    restricted=out/'notice-assets'/'gia-documents'/'manual.pdf'
-    if restricted.exists():
+    for restricted in out.rglob('manual.pdf'):
         restricted.unlink()
     homepage=out/'index.html'
     html=homepage.read_text(encoding='utf-8')
