@@ -73,13 +73,17 @@ def main():
     favicon='notice-assets/site-images/78326aac0c092349df10.png'
     homepage=out/'index.html'
     html=homepage.read_text(encoding='utf-8')
-    icon_tags='<link rel="icon" type="image/png" href="/'+favicon+'"><link rel="shortcut icon" href="/'+favicon+'"><link rel="apple-touch-icon" href="/'+favicon+'">'
+    icon_tags='<link rel="icon" type="image/png" href="/'+favicon+'?v=hjpa-20261122"><link rel="shortcut icon" href="/'+favicon+'?v=hjpa-20261122"><link rel="apple-touch-icon" href="/'+favicon+'?v=hjpa-20261122">'
     # Replace old icon declarations so browsers do not select a stale favicon.
     html=re.sub(r'<link\\b[^>]*\\brel\\s*=\\s*["\\\'](?:shortcut icon|icon|apple-touch-icon)["\\\'][^>]*>', '', html, flags=re.I)
     html=html.replace('</head>',icon_tags+'</head>',1)
     html=html.replace('</body>','<script defer src="/scripts/hjpa-document-reader.js"></script></body>',1)
     homepage.write_text(html,encoding='utf-8')
     shutil.copytree(ROOT/'scripts',out/'scripts',dirs_exist_ok=True)
+    # Fail publishing if key local assets are missing.
+    for required in [favicon,'scripts/hjpa-document-reader.js','jp-act.pdf','manual.pdf']:
+        if not (out/required).is_file():
+            raise FileNotFoundError('Required published asset missing: '+required)
     (out/'.nojekyll').touch()
     print(f'Built {len(notices)} posters and {len(slides)} slideshow images into _site')
 if __name__=='__main__':main()
