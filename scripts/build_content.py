@@ -49,6 +49,13 @@ def main():
     out.mkdir()
     for name in ['index.html','CNAME']:shutil.copyfile(ROOT/name,out/name)
     shutil.copytree(ASSETS,out/'notice-assets')
+    # The homepage references historical images through notice-assets/site-images/.
+    # Keep the original URLs intact by packaging existing root-level source images.
+    site_images=out/'notice-assets'/'site-images'
+    site_images.mkdir(parents=True,exist_ok=True)
+    for p in ROOT.iterdir():
+        if p.is_file() and not p.is_symlink() and p.suffix.lower() in EXT:
+            shutil.copyfile(p,site_images/p.name)
     for folder in ['announcements','homepage-slideshow']:
         (out/folder).mkdir()
         for p in (ROOT/folder).iterdir():
