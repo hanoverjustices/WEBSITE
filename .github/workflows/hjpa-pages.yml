@@ -27,6 +27,15 @@ jobs:
       - uses: actions/configure-pages@v5
       - name: Generate poster and slideshow indexes
         run: python scripts/build_content.py
+      - name: Check document reader JavaScript syntax
+        run: node --check scripts/hjpa-document-reader.js
+      - name: Check published local PDF and logo assets
+        run: |
+          test -s _site/index.html
+          test -s _site/notice-assets/site-images/78326aac0c092349df10.png
+          test -s _site/jp-act.pdf
+          test -s _site/manual.pdf
+          test -s _site/scripts/hjpa-document-reader.js
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
