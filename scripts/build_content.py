@@ -132,8 +132,8 @@ def main():
     # Only expose locally present PDFs to the interactive reader.
     # Broken, unavailable or HTML-only official sources are never presented as PDFs.
     local_map={
-      'jp-act':'documents/library/jp-act-2018.pdf','jp-amendment-2021':'documents/library/jp-act-2018.pdf',
-      'jp-jurisdiction':'jurisdiction.pdf','seals-regs':'seals.pdf',
+      'seals-act':'documents/library/official-seals-act-historical.pdf','jp-act':'documents/library/jp-act-2018.pdf','jp-amendment-2021':'documents/library/jp-act-2018.pdf',
+      'jp-jurisdiction':'documents/library/jp-jurisdiction.pdf','seals-regs':'documents/library/official-seals-regulations.pdf',
       'bail-act':'documents/library/bail-act-2023.pdf','bail-regs':'documents/library/bail-regulations.pdf',
       'constitution':'documents/library/constitution.pdf','jp-application':'documents/library/jp-application-form.pdf',
       'jp-annual-report':'documents/library/jp-act-2018.pdf',
