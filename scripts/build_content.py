@@ -209,6 +209,25 @@ def main():
         if filename!='index.html':
             page=page.replace('<main id="home">','<main id="home"><div style="padding:22px max(16px,5vw);background:#10243e;color:#e8d486;font:700 14px system-ui"><a href="/" style="color:inherit">← Home</a> / '+filename.replace('.html','').replace('-',' ').title()+'</div>',1)
         (out/filename).write_text(page,encoding='utf-8')
+    # Make document library a first-class page in the existing navigation.
+    for filename in page_sections:
+        p=out/filename
+        markup=p.read_text(encoding='utf-8')
+        markup=markup.replace('</nav>','<a href="/documents.html">Laws &amp; Forms</a></nav>',1)
+        p.write_text(markup,encoding='utf-8')
+    # Do not repeat the resource library promotional footer on every page.
+    for filename in page_sections:
+        if filename=='index.html':continue
+        p=out/filename
+        markup=p.read_text(encoding='utf-8')
+        markup=re.sub(r'<div style="text-align:center;padding:18px 12px 95px;background:#0c1c32"><a href="/documents.html".*?</div>','',markup,flags=re.S)
+        p.write_text(markup,encoding='utf-8')
+    # Responsive safeguards: no viewport overflow and clear focus indicators.
+    responsive='''<style id="hjpa-responsive-guard">html,body{max-width:100%;overflow-x:clip}img,video,iframe,svg{max-width:100%}img{height:auto}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #e8d486;outline-offset:3px}@media(max-width:767px){.wrap{max-width:100%;padding-left:16px;padding-right:16px}.section{padding-top:45px;padding-bottom:45px}.section-head{min-width:0}h1,h2,h3,p{overflow-wrap:break-word}.menu.open{max-height:calc(100dvh - 80px);overflow-y:auto;overscroll-behavior:contain}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}</style>'''
+    for filename in page_sections:
+        p=out/filename
+        markup=p.read_text(encoding='utf-8').replace('</head>',responsive+'</head>',1)
+        p.write_text(markup,encoding='utf-8')
     shutil.copytree(ROOT/'scripts',out/'scripts',dirs_exist_ok=True)
     # Fail publishing if key local assets are missing.
     for required in [favicon,'scripts/hjpa-document-reader.js']:
