@@ -126,6 +126,61 @@ def main():
     html=html.replace('Ask plain-language questions across the 200-page JP Qualifying Training Manual and the core JP Act, Jurisdiction Act, Official Seals Regulations and Bail Act. Gia cites the document and page used.','Ask questions about publicly available JP legislation and official resources. Always check current amendments with the issuing authority.')
     html=html.replace('JP Qualifying Training Manual','JP legal resources')
     homepage.write_text(html,encoding='utf-8')
+    # Only expose locally present PDFs to the interactive reader.
+    # Broken, unavailable or HTML-only official sources are never presented as PDFs.
+    local_map={
+      'jp-act':'jp-act.pdf','jp-amendment-2021':'jp-act.pdf',
+      'jp-jurisdiction':'jurisdiction.pdf','seals-regs':'seals.pdf',
+      'bail-act':'bail.pdf','bail-regs':'bail-regulations.pdf',
+      'constitution':'constitution.pdf','jp-application':'jp-application-form.pdf',
+      'jp-annual-report':'jp-act.pdf',
+    }
+    from urllib.parse import urlsplit
+    available_map={key:'/'+filename for key,filename in local_map.items() if (out/filename).is_file()}
+    reader_map=json.dumps(available_map,separators=(',',':'))
+    # Do not offer broken local copies through the old resource viewer.
+    # This bridge uses the same site-hosted PDF.js reader as the documents page.
+    resource_bridge='''<script defer src="/scripts/hjpa-resource-bridge.js"></script>'''
+    (ROOT/'scripts'/'hjpa-resource-bridge.js').write_text('''(function(){
+      const files=__FILES__;
+      const original=window.openResourceById;
+      window.openResourceById=function(id){
+        const resource=typeof RESOURCES!=='undefined'?RESOURCES.find(x=>x.id===id):null;
+        const file=files[id];
+        if(file && window.HJPA_openLocalPdf){
+          window.HJPA_openLocalPdf(file+(resource&&resource.page?'#page='+resource.page:''),resource?.title||'JP document');
+          return;
+        }
+        if(resource){
+          const title=resource.title||'Document';
+          const old=document.getElementById('viewer');
+          if(old){
+            const heading=document.getElementById('viewerTitle');
+            const body=document.getElementById('viewerBody');
+            if(heading)heading.textContent=title;
+            if(body){
+              const panel=document.createElement('div');panel.className='resource-unavailable';
+              const h=document.createElement('h3');h.textContent=title;
+              const p=document.createElement('p');p.textContent='A locally hosted PDF is not currently available. This entry has been disabled to avoid sending you to a broken or unverified link.';
+              panel.append(h,p);body.replaceChildren(panel);
+            }
+            old.classList.add('open');document.body.style.overflow='hidden';
+            return;
+          }
+        }
+        if(typeof original==='function')return original(id);
+      };
+      if(typeof RESOURCES!=='undefined'){
+        for(const resource of RESOURCES){
+          resource.localURL=files[resource.id]||null;
+          resource.unavailable=!files[resource.id];
+        }
+        if(typeof renderResources==='function')renderResources();
+      }
+    })();'''.replace('__FILES__',reader_map),encoding='utf-8')
+    html=homepage.read_text(encoding='utf-8')
+    html=html.replace('</body>',resource_bridge+'</body>',1)
+    homepage.write_text(html,encoding='utf-8')
     # Restore the HJPA logo in browser tabs using the same verified local image as the header.
     favicon='notice-assets/site-images/78326aac0c092349df10.png'
     homepage=out/'index.html'
