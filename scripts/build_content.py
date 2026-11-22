@@ -60,6 +60,26 @@ def main():
         (out/folder).mkdir()
         for p in (ROOT/folder).iterdir():
             if p.suffix.lower() in EXT:shutil.copyfile(p,out/folder/p.name)
+    # Local-first document delivery: all original repository PDF files are published.
+    for pdf in ROOT.rglob('*.pdf'):
+        if any(part in {'.git','_site','node_modules'} for part in pdf.relative_to(ROOT).parts):
+            continue
+        if pdf.is_symlink():
+            continue
+        dest=out/pdf.relative_to(ROOT)
+        dest.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(pdf,dest)
+    # Restore the HJPA logo in browser tabs using the same verified local image as the header.
+    favicon='notice-assets/site-images/78326aac0c092349df10.png'
+    homepage=out/'index.html'
+    html=homepage.read_text(encoding='utf-8')
+    icon_tags='<link rel="icon" type="image/png" href="/'+favicon+'"><link rel="shortcut icon" href="/'+favicon+'"><link rel="apple-touch-icon" href="/'+favicon+'">'
+    # Replace old icon declarations so browsers do not select a stale favicon.
+    html=re.sub(r'<link\\b[^>]*\\brel\\s*=\\s*["\\\'](?:shortcut icon|icon|apple-touch-icon)["\\\'][^>]*>', '', html, flags=re.I)
+    html=html.replace('</head>',icon_tags+'</head>',1)
+    html=html.replace('</body>','<script defer src="/scripts/hjpa-document-reader.js"></script></body>',1)
+    homepage.write_text(html,encoding='utf-8')
+    shutil.copytree(ROOT/'scripts',out/'scripts',dirs_exist_ok=True)
     (out/'.nojekyll').touch()
     print(f'Built {len(notices)} posters and {len(slides)} slideshow images into _site')
 if __name__=='__main__':main()
