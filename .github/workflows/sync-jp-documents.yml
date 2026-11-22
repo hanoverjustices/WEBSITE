@@ -1,0 +1,36 @@
+name: Sync official JP reference PDFs
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync_approved_pdfs.py'
+      - '.github/workflows/sync-jp-documents.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '15 9 1 * *'
+permissions:
+  contents: write
+concurrency:
+  group: hjpa-official-document-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and validate listed public official PDFs
+        run: python scripts/sync_approved_pdfs.py
+      - name: Commit verified PDF snapshots and provenance
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/library
+          if ! git diff --cached --quiet; then
+            git commit -m "Sync official JP document snapshots and provenance"
+            git push
+          fi
