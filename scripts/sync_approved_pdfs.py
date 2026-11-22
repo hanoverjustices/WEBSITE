@@ -8,6 +8,9 @@ ROOT=Path(__file__).resolve().parents[1]
 DEST=ROOT/'documents'/'library'
 DEST.mkdir(parents=True,exist_ok=True)
 SOURCES={
+ 'jp-jurisdiction.pdf':'https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf',
+ 'official-seals-regulations.pdf':'https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf',
+ 'official-seals-act-historical.pdf':'https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf',
  'jp-act-2018.pdf':'https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf',
  'bail-act-2023.pdf':'https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf',
  'jp-application-form.pdf':'https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf',
