@@ -99,6 +99,18 @@ def main():
     html=html.replace('</head>',icon_tags+'</head>',1)
     html=html.replace('</body>','<script defer src="/scripts/hjpa-document-reader.js"></script></body>',1)
     homepage.write_text(html,encoding='utf-8')
+    # A browsable index of actual local PDFs, rather than links to guessed files.
+    local_documents=sorted(p for p in out.rglob('*.pdf') if p.is_file())
+    from html import escape as html_escape
+    cards=[]
+    for pdf in local_documents:
+        rel=pdf.relative_to(out).as_posix()
+        title=pdf.stem.replace('_',' ').replace('-',' ').strip()
+        cards.append('<a class="document-card" href="/'+html_escape(quote(rel,safe='/'))+'"><span>PDF</span><strong>'+html_escape(title)+'</strong><small>Read online or download</small></a>')
+    document_page='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laws, Forms & Documents | Hanover JPA</title><link rel="icon" href="/notice-assets/site-images/78326aac0c092349df10.png"><style>body{margin:0;background:#f2f5fa;color:#182d4d;font:16px system-ui}header{background:#10274b;color:white;padding:28px max(20px,calc((100vw - 1100px)/2))}header a{color:#f3d68a}main{max-width:1100px;margin:auto;padding:24px 20px 80px}.documents{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.document-card{display:flex;flex-direction:column;gap:9px;padding:19px;border:1px solid #d9e3f1;background:white;border-radius:14px;box-shadow:0 5px 20px #11284b12;text-decoration:none;color:#182d4d}.document-card span{font-size:11px;font-weight:800;color:#265c99}.document-card strong{font-size:17px}.document-card small{color:#52677f}.document-card:hover,.document-card:focus-visible{outline:2px solid #ba9c54}input{padding:13px;width:min(100%,500px);box-sizing:border-box;border:1px solid #a6b8ce;border-radius:10px;margin:15px 0 25px}footer{max-width:1100px;margin:20px auto;padding:20px;font-size:12px;color:#566}</style></head><body><header><a href="/">← Hanover JPA Home</a><h1>Laws, Forms & Document Library</h1><p>Open available local PDF documents in the interactive reader. Check the issuing authority for current amendments and form revisions.</p></header><main><label for="docFilter">Find a document</label><div><input id="docFilter" type="search" placeholder="Search laws, forms and documents"></div><div class="documents" id="documents">'''+''.join(cards)+'''</div></main><footer>Reference copies are not a substitute for the latest official law or form. Confirm amendments and current requirements with the issuing authority.</footer><script defer src="/scripts/hjpa-document-reader.js"></script><script>document.getElementById('docFilter').addEventListener('input',function(){const q=this.value.toLowerCase();document.querySelectorAll('.document-card').forEach(x=>x.hidden=!x.textContent.toLowerCase().includes(q))})</script></body></html>'''
+    (out/'documents.html').write_text(document_page,encoding='utf-8')
+    # Add a nonfloating navigation link without changing existing page structure.
+    homepage.write_text(homepage.read_text(encoding='utf-8').replace('</body>','<div style="text-align:center;padding:18px 12px 95px;background:#0c1c32"><a href="/documents.html" style="color:#f2d789;font:700 15px system-ui;text-decoration:underline">Browse Laws, Forms &amp; PDF Library</a></div></body>',1),encoding='utf-8')
     shutil.copytree(ROOT/'scripts',out/'scripts',dirs_exist_ok=True)
     # Fail publishing if key local assets are missing.
     for required in [favicon,'scripts/hjpa-document-reader.js']:
