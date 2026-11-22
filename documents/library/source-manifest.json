@@ -1,0 +1,53 @@
+{
+  "checkedOn": "2026-11-22",
+  "documents": [
+    {
+      "filename": "jp-jurisdiction.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "official-seals-regulations.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "official-seals-act-historical.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "jp-act-2018.pdf",
+      "sourceUrl": "https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "bail-act-2023.pdf",
+      "sourceUrl": "https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "jp-application-form.pdf",
+      "sourceUrl": "https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "bail-regulations.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "constitution.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    }
+  ]
+}
