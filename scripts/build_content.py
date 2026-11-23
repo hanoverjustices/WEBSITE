@@ -136,7 +136,16 @@ def main():
       'jp-jurisdiction':'documents/library/jp-jurisdiction.pdf','seals-regs':'documents/library/official-seals-regulations.pdf',
       'bail-act':'documents/library/bail-act-2023.pdf','bail-regs':'documents/library/bail-regulations.pdf',
       'constitution':'documents/library/constitution.pdf','jp-application':'documents/library/jp-application-form.pdf',
-      'jp-annual-report':'documents/library/jp-act-2018.pdf',
+      'jp-annual-report':'documents/library/jp-annual-report-form.pdf',
+      'spirit-licence':'documents/library/spirit-licence-act.pdf',
+      'zoso-act':'documents/library/zoso-act.pdf',
+      'parish-courts-act':'documents/library/parish-courts-act.pdf',
+      'voluntary-declarations':'documents/library/voluntary-declarations-act.pdf',
+      'oaths-act':'documents/library/oaths-act.pdf',
+      'interpretation-act':'documents/library/interpretation-act.pdf',
+      'poca':'documents/library/proceeds-of-crime-act.pdf',
+      'child-diversion':'documents/library/child-diversion-act.pdf',
+      'jp-amendment-2021':'documents/library/jp-amendment-2021.pdf',
     }
     from urllib.parse import urlsplit
     available_map={key:'/'+filename for key,filename in local_map.items() if (out/filename).is_file()}
