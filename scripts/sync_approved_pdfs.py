@@ -53,6 +53,8 @@ class PDFLinks(HTMLParser):
 
 def resolve_pdf(url):
     if '.pdf' in urlparse(url).path.lower():return url
+    if urlparse(url).netloc=='laws.moj.gov.jm' and '/library/' in urlparse(url).path:
+        return url.rstrip('/')+'/download'
     req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 HJPA-document-library'})
     with urllib.request.urlopen(req,timeout=20) as response:
         if 'pdf' in response.headers.get('Content-Type','').lower():return url
