@@ -36,11 +36,11 @@
     },
     {
       "filename": "bail-act-2023.pdf",
-      "sourceUrl": "https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/the-bail-act-2023/download",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf",
-      "error": "HTTP Error 520: <none>"
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/library/act-of-parliament/the-bail-act-2023/download/download",
+      "error": "HTTP Error 503: Service Temporarily Unavailable"
     },
     {
       "filename": "jp-application-form.pdf",
@@ -69,11 +69,12 @@
     },
     {
       "filename": "jp-annual-report-form.pdf",
-      "sourceUrl": "https://moj.gov.jm/justice-peace",
-      "downloaded": false,
-      "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://moj.gov.jm/sites/default/files/JPs/Justices of the Peace_Secured.pdf",
-      "error": "URL can't contain control characters. '/sites/default/files/JPs/Justices of the Peace_Secured.pdf' (found at least ' ')"
+      "sourceUrl": "https://moj.gov.jm/sites/default/files/JPs/Justices%20of%20the%20Peace_Secured.pdf",
+      "downloaded": true,
+      "status": "Downloaded official-source snapshot; check amendments",
+      "resolvedPdfUrl": "https://moj.gov.jm/sites/default/files/JPs/Justices%20of%20the%20Peace_Secured.pdf",
+      "sha256": "41345685fb8d2bd8ca7738d54925f5f0850a9ff0786ce047c142bfd8d2fb083e",
+      "size": 72387
     },
     {
       "filename": "spirit-licence-act.pdf",
