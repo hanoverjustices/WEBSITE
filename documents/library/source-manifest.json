@@ -6,128 +6,148 @@
       "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf"
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "official-seals-regulations.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf"
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "official-seals-act-historical.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf"
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "jp-act-2018.pdf",
       "sourceUrl": "https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf"
+      "resolvedPdfUrl": "https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "bail-act-2023.pdf",
       "sourceUrl": "https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf"
+      "resolvedPdfUrl": "https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf",
+      "error": "HTTP Error 520: <none>"
     },
     {
       "filename": "jp-application-form.pdf",
       "sourceUrl": "https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf"
+      "resolvedPdfUrl": "https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "bail-regulations.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf"
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "constitution.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf"
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "jp-annual-report-form.pdf",
       "sourceUrl": "https://moj.gov.jm/justice-peace",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "spirit-licence-act.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-spirit-licence-act",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "zoso-act.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/law-reform-zones-of-special-operations-special-security-and-community-development-measures",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "parish-courts-act.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/21-of-2021-the-judicature-parish-courts-act",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "voluntary-declarations-act.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "oaths-act.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-oaths-act",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "interpretation-act.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-interpretation-act",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "proceeds-of-crime-act.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-proceeds-of-crime-act",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "child-diversion-act.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-child-diversion-act-2018",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "jp-amendment-2021.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/9-of-2021-the-justices-of-the-peace-amendment-act",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "jp-act-parliament.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/10-2018-the-justices-of-the-peace-act",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     },
     {
       "filename": "official-seals-regulations-revised.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-justices-of-the-peace-official-seals",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
     }
   ]
 }
