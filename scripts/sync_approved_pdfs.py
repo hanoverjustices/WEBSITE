@@ -3,7 +3,7 @@ This is a best-effort ingestion job, not a statement about current law or redist
 Do not add private training manuals or documents without permission.
 """
 from pathlib import Path
-import hashlib,json,urllib.request,urllib.error,datetime,ssl
+import hashlib,json,urllib.request,urllib.error,datetime,ssl,time
 ROOT=Path(__file__).resolve().parents[1]
 DEST=ROOT/'documents'/'library'
 DEST.mkdir(parents=True,exist_ok=True)
@@ -12,7 +12,7 @@ SOURCES={
  'official-seals-regulations.pdf':'https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf',
  'official-seals-act-historical.pdf':'https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf',
  'jp-act-2018.pdf':'https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf',
- 'bail-act-2023.pdf':'https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf',
+ 'bail-act-2023.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/the-bail-act-2023/download',
  'jp-application-form.pdf':'https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf',
  'bail-regulations.pdf':'https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf',
  'constitution.pdf':'https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf',
@@ -88,7 +88,12 @@ def main():
             download_url=urlunsplit((split.scheme,split.netloc,quote(split.path,safe='/%'),split.query,split.fragment))
             row['resolvedPdfUrl']=download_url
             req=urllib.request.Request(download_url,headers={'User-Agent':'HJPA-document-library/1.0','Accept':'application/pdf'})
-            content=fetch_official(req,20*1024*1024+1)
+            try:
+                content=fetch_official(req,20*1024*1024+1)
+            except urllib.error.HTTPError as first_error:
+                if first_error.code not in (429,500,502,503,504,520):raise
+                time.sleep(3)
+                content=fetch_official(req,20*1024*1024+1)
             if len(content)>20*1024*1024 or len(content)<1500 or not content.lstrip().startswith(b'%PDF-') or b'%%EOF' not in content[-4096:]:
                 raise ValueError('Invalid, incomplete or oversized PDF')
             if not target.exists() or target.read_bytes()!=content:target.write_bytes(content)
