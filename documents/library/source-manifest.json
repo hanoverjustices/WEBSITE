@@ -1,51 +1,131 @@
 {
-  "checkedOn": "2026-11-22",
+  "checkedOn": "2026-11-23",
   "documents": [
     {
       "filename": "jp-jurisdiction.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf"
     },
     {
       "filename": "official-seals-regulations.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf"
     },
     {
       "filename": "official-seals-act-historical.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf"
     },
     {
       "filename": "jp-act-2018.pdf",
       "sourceUrl": "https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "resolvedPdfUrl": "https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf"
     },
     {
       "filename": "bail-act-2023.pdf",
       "sourceUrl": "https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "resolvedPdfUrl": "https://mlca.gov.jm/wp-content/uploads/2023/12/The-Bail-Act-2023.pdf"
     },
     {
       "filename": "jp-application-form.pdf",
       "sourceUrl": "https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "resolvedPdfUrl": "https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf"
     },
     {
       "filename": "bail-regulations.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf",
       "downloaded": false,
-      "status": "Unavailable from official source"
+      "status": "Unavailable from official source",
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf"
     },
     {
       "filename": "constitution.pdf",
       "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf",
+      "downloaded": false,
+      "status": "Unavailable from official source",
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf"
+    },
+    {
+      "filename": "jp-annual-report-form.pdf",
+      "sourceUrl": "https://moj.gov.jm/justice-peace",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "spirit-licence-act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-spirit-licence-act",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "zoso-act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/law-reform-zones-of-special-operations-special-security-and-community-development-measures",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "parish-courts-act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/21-of-2021-the-judicature-parish-courts-act",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "voluntary-declarations-act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "oaths-act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-oaths-act",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "interpretation-act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-interpretation-act",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "proceeds-of-crime-act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-proceeds-of-crime-act",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "child-diversion-act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-child-diversion-act-2018",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "jp-amendment-2021.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/9-of-2021-the-justices-of-the-peace-amendment-act",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "jp-act-parliament.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/10-2018-the-justices-of-the-peace-act",
+      "downloaded": false,
+      "status": "Unavailable from official source"
+    },
+    {
+      "filename": "official-seals-regulations-revised.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-justices-of-the-peace-official-seals",
       "downloaded": false,
       "status": "Unavailable from official source"
     }
