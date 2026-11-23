@@ -21,6 +21,7 @@ SOURCES={
 # Further public JP references are discovered from the official statute records.
 # A statute landing page is never stored as a PDF.
 MORE_SOURCES={
+ 'jp-annual-report-form.pdf':'https://moj.gov.jm/justice-peace',
  'spirit-licence-act.pdf':'https://laws.moj.gov.jm/library/statute/the-spirit-licence-act',
  'zoso-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/law-reform-zones-of-special-operations-special-security-and-community-development-measures',
  'parish-courts-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/21-of-2021-the-judicature-parish-courts-act',
@@ -38,11 +39,17 @@ SOURCES.update(MORE_SOURCES)
 from html.parser import HTMLParser
 from urllib.parse import urljoin,urlparse
 class PDFLinks(HTMLParser):
-    def __init__(self):super().__init__();self.links=[]
+    def __init__(self):super().__init__();self.links=[];self.candidates=[];self.active=None
     def handle_starttag(self,tag,attrs):
         if tag!='a':return
         d=dict(attrs);href=d.get('href','')
         if '.pdf' in href.lower():self.links.append(href)
+        self.active={'href':href,'text':''}
+    def handle_data(self,data):
+        if self.active:self.active['text']+=data
+    def handle_endtag(self,tag):
+        if tag=='a' and self.active:
+            self.candidates.append(self.active);self.active=None
 
 def resolve_pdf(url):
     if '.pdf' in urlparse(url).path.lower():return url
@@ -51,6 +58,10 @@ def resolve_pdf(url):
         if 'pdf' in response.headers.get('Content-Type','').lower():return url
         html=response.read(2*1024*1024).decode('utf-8','replace')
     parser=PDFLinks();parser.feed(html)
+    if 'justice-peace' in url and 'moj.gov.jm' in url:
+        for candidate in parser.candidates:
+            if 'annual' in candidate['text'].lower() and ('download' in candidate['text'].lower() or 'form' in candidate['text'].lower()) and candidate['href']:
+                return urljoin(url,candidate['href'])
     if not parser.links:raise ValueError('No direct PDF link found on official statute page')
     return urljoin(url,parser.links[0])
 
