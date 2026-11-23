@@ -86,6 +86,7 @@ def main():
                 row.update(downloaded=True,status='Existing repository copy; source refresh failed',sha256=hashlib.sha256(target.read_bytes()).hexdigest(),size=target.stat().st_size)
             else:
                 row['status']='Unavailable from official source'
+            row['error']=str(exc)[:500]
             print('WARN',name,str(exc)[:220])
         records.append(row)
     (DEST/'source-manifest.json').write_text(json.dumps({'checkedOn':datetime.date.today().isoformat(),'documents':records},indent=2)+'\n',encoding='utf-8')
