@@ -3,7 +3,7 @@ This is a best-effort ingestion job, not a statement about current law or redist
 Do not add private training manuals or documents without permission.
 """
 from pathlib import Path
-import hashlib,json,urllib.request,urllib.error,datetime
+import hashlib,json,urllib.request,urllib.error,datetime,ssl
 ROOT=Path(__file__).resolve().parents[1]
 DEST=ROOT/'documents'/'library'
 DEST.mkdir(parents=True,exist_ok=True)
@@ -56,9 +56,7 @@ def resolve_pdf(url):
     if urlparse(url).netloc=='laws.moj.gov.jm' and '/library/' in urlparse(url).path:
         return url.rstrip('/')+'/download'
     req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 HJPA-document-library'})
-    with urllib.request.urlopen(req,timeout=20) as response:
-        if 'pdf' in response.headers.get('Content-Type','').lower():return url
-        html=response.read(2*1024*1024).decode('utf-8','replace')
+    html=fetch_official(req,2*1024*1024).decode('utf-8','replace')
     parser=PDFLinks();parser.feed(html)
     if 'justice-peace' in url and 'moj.gov.jm' in url:
         for candidate in parser.candidates:
@@ -66,6 +64,18 @@ def resolve_pdf(url):
                 return urljoin(url,candidate['href'])
     if not parser.links:raise ValueError('No direct PDF link found on official statute page')
     return urljoin(url,parser.links[0])
+
+def fetch_official(request,max_bytes):
+    try:
+        return urllib.request.urlopen(request,timeout=20).read(max_bytes)
+    except urllib.error.URLError as exc:
+        # Some official Jamaican government servers omit their TLS intermediate.
+        # Retry only on the explicit government domains and only for cert-chain errors.
+        host=urlparse(request.full_url).hostname or ''
+        if ('CERTIFICATE_VERIFY_FAILED' not in str(exc) or not (host=='moj.gov.jm' or host=='laws.moj.gov.jm' or host=='mlca.gov.jm')):
+            raise
+        print('NOTICE: government server TLS chain incomplete:',host)
+        return urllib.request.urlopen(request,timeout=20,context=ssl._create_unverified_context()).read(max_bytes)
 
 def main():
     records=[]
@@ -76,8 +86,7 @@ def main():
             download_url=resolve_pdf(url)
             row['resolvedPdfUrl']=download_url
             req=urllib.request.Request(download_url,headers={'User-Agent':'HJPA-document-library/1.0','Accept':'application/pdf'})
-            with urllib.request.urlopen(req,timeout=20) as response:
-                content=response.read(20*1024*1024+1)
+            content=fetch_official(req,20*1024*1024+1)
             if len(content)>20*1024*1024 or len(content)<1500 or not content.lstrip().startswith(b'%PDF-') or b'%%EOF' not in content[-4096:]:
                 raise ValueError('Invalid, incomplete or oversized PDF')
             if not target.exists() or target.read_bytes()!=content:target.write_bytes(content)
