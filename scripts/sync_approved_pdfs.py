@@ -8,11 +8,11 @@ ROOT=Path(__file__).resolve().parents[1]
 DEST=ROOT/'documents'/'library'
 DEST.mkdir(parents=True,exist_ok=True)
 SOURCES={
- 'jp-jurisdiction.pdf':'https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf',
+ 'jp-jurisdiction.pdf':'https://laws.moj.gov.jm/library/statute/the-justices-of-the-peace-jurisdiction-act/download',
  'official-seals-regulations.pdf':'https://laws.moj.gov.jm/legislation/subsids/J/JP%20%28Official%20Seals%29%20Regulations%20LN%2089%20B%20of%202004.pdf',
  'official-seals-act-historical.pdf':'https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20%28Official%20Seals%29%20Act.pdf',
  'jp-act-2018.pdf':'https://moj.gov.jm/sites/default/files/2022-07/The%20Justices%20of%20the%20Peace%20Act%2C%202018%20No.%2010.pdf',
- 'bail-act-2023.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/the-bail-act-2023/download',
+ 'bail-act-2023.pdf':'https://www.japarliament.gov.jm/attachments/article/339/The-Bail-Act--2023.pdf',
  'jp-application-form.pdf':'https://moj.gov.jm/sites/default/files/2021-06/JP_Application_Form.pdf',
  'bail-regulations.pdf':'https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf',
  'constitution.pdf':'https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf',
@@ -25,8 +25,8 @@ MORE_SOURCES={
  'spirit-licence-act.pdf':'https://laws.moj.gov.jm/library/statute/the-spirit-licence-act',
  'zoso-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/law-reform-zones-of-special-operations-special-security-and-community-development-measures',
  'parish-courts-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/21-of-2021-the-judicature-parish-courts-act',
- 'voluntary-declarations-act.pdf':'https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act',
- 'oaths-act.pdf':'https://laws.moj.gov.jm/library/statute/the-oaths-act',
+ 'voluntary-declarations-act.pdf':'https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act/download',
+ 'oaths-act.pdf':'https://laws.moj.gov.jm/library/statute/the-oaths-act/download',
  'interpretation-act.pdf':'https://laws.moj.gov.jm/library/statute/the-interpretation-act',
  'proceeds-of-crime-act.pdf':'https://laws.moj.gov.jm/library/statute/the-proceeds-of-crime-act',
  'child-diversion-act.pdf':'https://laws.moj.gov.jm/library/statute/the-child-diversion-act-2018',
