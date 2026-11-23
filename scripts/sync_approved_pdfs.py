@@ -21,7 +21,7 @@ SOURCES={
 # Further public JP references are discovered from the official statute records.
 # A statute landing page is never stored as a PDF.
 MORE_SOURCES={
- 'jp-annual-report-form.pdf':'https://moj.gov.jm/justice-peace',
+ 'jp-annual-report-form.pdf':'https://moj.gov.jm/sites/default/files/JPs/Justices%20of%20the%20Peace_Secured.pdf',
  'spirit-licence-act.pdf':'https://laws.moj.gov.jm/library/statute/the-spirit-licence-act',
  'zoso-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/law-reform-zones-of-special-operations-special-security-and-community-development-measures',
  'parish-courts-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/21-of-2021-the-judicature-parish-courts-act',
@@ -37,7 +37,7 @@ MORE_SOURCES={
 SOURCES.update(MORE_SOURCES)
 
 from html.parser import HTMLParser
-from urllib.parse import urljoin,urlparse
+from urllib.parse import urljoin,urlparse,quote,urlsplit,urlunsplit
 class PDFLinks(HTMLParser):
     def __init__(self):super().__init__();self.links=[];self.candidates=[];self.active=None
     def handle_starttag(self,tag,attrs):
@@ -84,6 +84,8 @@ def main():
         row={'filename':name,'sourceUrl':url,'downloaded':False,'status':'not verified'}
         try:
             download_url=resolve_pdf(url)
+            split=urlsplit(download_url)
+            download_url=urlunsplit((split.scheme,split.netloc,quote(split.path,safe='/%'),split.query,split.fragment))
             row['resolvedPdfUrl']=download_url
             req=urllib.request.Request(download_url,headers={'User-Agent':'HJPA-document-library/1.0','Accept':'application/pdf'})
             content=fetch_official(req,20*1024*1024+1)
