@@ -3,10 +3,10 @@
   "documents": [
     {
       "filename": "jp-jurisdiction.pdf",
-      "sourceUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-justices-of-the-peace-jurisdiction-act/download",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/The%20Justices%20of%20the%20Peace%20Jurisdiction%20Act.pdf",
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/library/statute/the-justices-of-the-peace-jurisdiction-act/download/download",
       "error": "HTTP Error 503: Service Temporarily Unavailable"
     },
     {
@@ -36,11 +36,12 @@
     },
     {
       "filename": "bail-act-2023.pdf",
-      "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/the-bail-act-2023/download",
-      "downloaded": false,
-      "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/library/act-of-parliament/the-bail-act-2023/download/download",
-      "error": "HTTP Error 503: Service Temporarily Unavailable"
+      "sourceUrl": "https://www.japarliament.gov.jm/attachments/article/339/The-Bail-Act--2023.pdf",
+      "downloaded": true,
+      "status": "Downloaded official-source snapshot; check amendments",
+      "resolvedPdfUrl": "https://www.japarliament.gov.jm/attachments/article/339/The-Bail-Act--2023.pdf",
+      "sha256": "f20b1b857d32f3d27758d7bf11dcd66f7e4fcd601d128b5b9087c7c92bc62916",
+      "size": 936156
     },
     {
       "filename": "jp-application-form.pdf",
@@ -66,6 +67,24 @@
       "status": "Unavailable from official source",
       "resolvedPdfUrl": "https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf",
       "error": "HTTP Error 503: Service Temporarily Unavailable"
+    },
+    {
+      "filename": "bail-surety-declaration-form.pdf",
+      "sourceUrl": "https://www.parishcourt.gov.jm/sites/default/files/forms/The%20Bail%20Act%202023.pdf",
+      "downloaded": true,
+      "status": "Downloaded official-source snapshot; check amendments",
+      "resolvedPdfUrl": "https://www.parishcourt.gov.jm/sites/default/files/forms/The%20Bail%20Act%202023.pdf",
+      "sha256": "088144fcfafe3c99e45b3338fd656363da0de8049ff6ec509d77927185e7e1db",
+      "size": 66968
+    },
+    {
+      "filename": "spirit-licence-form-68.pdf",
+      "sourceUrl": "https://www.parishcourt.gov.jm/sites/default/files/forms/form%2068%20Spirit%20and%20Club%20Licence%20Form_0.pdf",
+      "downloaded": true,
+      "status": "Downloaded official-source snapshot; check amendments",
+      "resolvedPdfUrl": "https://www.parishcourt.gov.jm/sites/default/files/forms/form%2068%20Spirit%20and%20Club%20Licence%20Form_0.pdf",
+      "sha256": "e9eaf7ae7cf12c18d573304ebfabf0be8304a32bb97c2fcddd09b4043211e2b5",
+      "size": 255716
     },
     {
       "filename": "jp-annual-report-form.pdf",
@@ -102,18 +121,18 @@
     },
     {
       "filename": "voluntary-declarations-act.pdf",
-      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act/download",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act/download",
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act/download/download",
       "error": "HTTP Error 503: Service Temporarily Unavailable"
     },
     {
       "filename": "oaths-act.pdf",
-      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-oaths-act",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-oaths-act/download",
       "downloaded": false,
       "status": "Unavailable from official source",
-      "resolvedPdfUrl": "https://laws.moj.gov.jm/library/statute/the-oaths-act/download",
+      "resolvedPdfUrl": "https://laws.moj.gov.jm/library/statute/the-oaths-act/download/download",
       "error": "HTTP Error 503: Service Temporarily Unavailable"
     },
     {
