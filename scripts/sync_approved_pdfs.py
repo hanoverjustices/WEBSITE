@@ -17,13 +17,52 @@ SOURCES={
  'bail-regulations.pdf':'https://laws.moj.gov.jm/legislation/subsids/B/The%20Bail%20Act%20%28sub%20leg%29.pdf',
  'constitution.pdf':'https://laws.moj.gov.jm/legislation/statutes/J/Ja%20%28Constitution%29%20Order%20in%20Council%201962_1.pdf',
 }
+
+# Further public JP references are discovered from the official statute records.
+# A statute landing page is never stored as a PDF.
+MORE_SOURCES={
+ 'spirit-licence-act.pdf':'https://laws.moj.gov.jm/library/statute/the-spirit-licence-act',
+ 'zoso-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/law-reform-zones-of-special-operations-special-security-and-community-development-measures',
+ 'parish-courts-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/21-of-2021-the-judicature-parish-courts-act',
+ 'voluntary-declarations-act.pdf':'https://laws.moj.gov.jm/library/statute/the-voluntary-declarations-act',
+ 'oaths-act.pdf':'https://laws.moj.gov.jm/library/statute/the-oaths-act',
+ 'interpretation-act.pdf':'https://laws.moj.gov.jm/library/statute/the-interpretation-act',
+ 'proceeds-of-crime-act.pdf':'https://laws.moj.gov.jm/library/statute/the-proceeds-of-crime-act',
+ 'child-diversion-act.pdf':'https://laws.moj.gov.jm/library/statute/the-child-diversion-act-2018',
+ 'jp-amendment-2021.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/9-of-2021-the-justices-of-the-peace-amendment-act',
+ 'jp-act-parliament.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/10-2018-the-justices-of-the-peace-act',
+ 'official-seals-regulations-revised.pdf':'https://laws.moj.gov.jm/library/subsidiary-legislation/the-justices-of-the-peace-official-seals',
+}
+SOURCES.update(MORE_SOURCES)
+
+from html.parser import HTMLParser
+from urllib.parse import urljoin,urlparse
+class PDFLinks(HTMLParser):
+    def __init__(self):super().__init__();self.links=[]
+    def handle_starttag(self,tag,attrs):
+        if tag!='a':return
+        d=dict(attrs);href=d.get('href','')
+        if '.pdf' in href.lower():self.links.append(href)
+
+def resolve_pdf(url):
+    if '.pdf' in urlparse(url).path.lower():return url
+    req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 HJPA-document-library'})
+    with urllib.request.urlopen(req,timeout=20) as response:
+        if 'pdf' in response.headers.get('Content-Type','').lower():return url
+        html=response.read(2*1024*1024).decode('utf-8','replace')
+    parser=PDFLinks();parser.feed(html)
+    if not parser.links:raise ValueError('No direct PDF link found on official statute page')
+    return urljoin(url,parser.links[0])
+
 def main():
     records=[]
     for name,url in SOURCES.items():
         target=DEST/name
         row={'filename':name,'sourceUrl':url,'downloaded':False,'status':'not verified'}
         try:
-            req=urllib.request.Request(url,headers={'User-Agent':'HJPA-document-library/1.0','Accept':'application/pdf'})
+            download_url=resolve_pdf(url)
+            row['resolvedPdfUrl']=download_url
+            req=urllib.request.Request(download_url,headers={'User-Agent':'HJPA-document-library/1.0','Accept':'application/pdf'})
             with urllib.request.urlopen(req,timeout=20) as response:
                 content=response.read(20*1024*1024+1)
             if len(content)>20*1024*1024 or len(content)<1500 or not content.lstrip().startswith(b'%PDF-') or b'%%EOF' not in content[-4096:]:
