@@ -21,6 +21,8 @@ SOURCES={
 # Further public JP references are discovered from the official statute records.
 # A statute landing page is never stored as a PDF.
 MORE_SOURCES={
+ 'bail-surety-declaration-form.pdf':'https://www.parishcourt.gov.jm/sites/default/files/forms/The%20Bail%20Act%202023.pdf',
+ 'spirit-licence-form-68.pdf':'https://www.parishcourt.gov.jm/sites/default/files/forms/form%2068%20Spirit%20and%20Club%20Licence%20Form_0.pdf',
  'jp-annual-report-form.pdf':'https://moj.gov.jm/sites/default/files/JPs/Justices%20of%20the%20Peace_Secured.pdf',
  'spirit-licence-act.pdf':'https://laws.moj.gov.jm/library/statute/the-spirit-licence-act',
  'zoso-act.pdf':'https://laws.moj.gov.jm/library/act-of-parliament/law-reform-zones-of-special-operations-special-security-and-community-development-measures',
